@@ -1,6 +1,11 @@
 let humanScore = 0;
 let computerScore = 0;
 
+const buttons = document.querySelectorAll("button");
+buttons.forEach((button) => {
+    button.addEventListener("click", playGame);
+});
+
 function getComputerChoice() {
     let choice = Math.floor(Math.random() * 3);
     switch(choice) {
@@ -77,5 +82,3 @@ function playGame() {
         alert(`You lose... Your score: ${humanScore} - ${computerScore}`);
     }
 }
-
-playGame();
