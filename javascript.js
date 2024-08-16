@@ -5,7 +5,6 @@ const buttons = document.querySelectorAll("button");
 buttons.forEach((button) => {
     button.addEventListener("click", playGame);
 });
-
 function getComputerChoice() {
     let choice = Math.floor(Math.random() * 3);
     switch(choice) {
@@ -69,16 +68,20 @@ function playGame() {
                 break;
         }
     }
-    while (humanScore < 3 && computerScore < 3) {
-        const humanSelection = getHumanChoice();
-        const computerSelection = getComputerChoice();
-        playRound(humanSelection, computerSelection); 
-    }
+  
+    const humanSelection = getHumanChoice();
+    const computerSelection = getComputerChoice();
+    playRound(humanSelection, computerSelection); 
+
     
-    if (humanScore > computerScore) {
+    if (humanScore === 5) {
         alert(`You win! Your score: ${humanScore} - ${computerScore}`);
+        humanScore = 0;
+        computerScore = 0;
     }
-    else if (humanScore < computerScore) {
+    else if (computerScore === 5) {
         alert(`You lose... Your score: ${humanScore} - ${computerScore}`);
+        humanScore = 0;
+        computerScore = 0;
     }
 }
